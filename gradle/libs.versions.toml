@@ -1,0 +1,116 @@
+[versions]
+appinfo-packagename = "io.github.curioustools.tvstore" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+appinfo-compileSdk = "36" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+appinfo-targetSdk = "36" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+appinfo-minSdk = "28" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+appinfo-versionCode = "25" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+appinfo-versionName = "3.0.8" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+appinfo-jvm = "17" # DONT REMOVE . these are not being linked, but are being used in build.gradle.kts as appinfo.xyz
+awsBom = "2.25.39"
+awsStaxApi = "1.0-2"
+awsWoodstoxCoreAsl = "4.4.1"
+kotlinxSerializationJson = "1.9.0"
+ksp = "2.2.0-2.0.2" #should be compatible with kotlin version : https://developer.android.com/build/migrate-to-ksp#add-ksp
+android-gradle = "8.11.1" #should be compatible with android studio and gradle wrapper version : https://developer.android.com/build/releases/gradle-plugin#updating-gradle
+androidx-core = "1.12.0"
+androidx-junit = "1.1.5"
+appcompat = "1.6.1"
+browser = "1.8.0"
+constraintlayout = "2.1.4"
+coroutines = "1.7.1"
+desugar = "2.1.5"
+espresso = "3.5.1"
+exoplayer = "2.15.1"
+firebase-bom = "32.8.0"
+firebase-crashlytics = "2.9.9"
+firebase-perf = "1.4.2"
+glide = "4.16.0"
+google-services = "4.4.0"
+gson = "2.10.1"
+jsoup = "1.13.1"
+junit = "4.13.2"
+legacy-support = "1.0.0"
+lifecycle = "2.7.0"
+lingver = "1.3.0"
+material = "1.11.0"
+navigationFragment = "2.9.1"
+okhttp = "4.9.2"
+recyclerview = "1.3.2"
+retrofit = "2.9.0"
+stetho = "1.6.0"
+timber = "5.0.1"
+hilt = "2.51.1"
+androidx_hilt = "1.2.0"
+agp = "8.11.1"
+kotlin = "2.2.0"
+coreKtx = "1.16.0"
+leanback = "1.0.0"
+
+[libraries]
+androidx-leanback = { group = "androidx.leanback", name = "leanback", version.ref = "leanback" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationFragment" }
+androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationFragment" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragment" }
+aws-bom = { module = "software.amazon.awssdk:bom", version.ref = "awsBom" }
+auth = { module = "software.amazon.awssdk:auth" }
+regions = { module = "software.amazon.awssdk:regions" }
+s3 = { module = "software.amazon.awssdk:s3" }
+url-connection-client = { module = "software.amazon.awssdk:url-connection-client" }
+stax-api = { module = "javax.xml.stream:stax-api", version.ref = "awsStaxApi" }
+woodstox-core-asl = { module = "org.codehaus.woodstox:woodstox-core-asl", version.ref = "awsWoodstoxCoreAsl" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+lifecycle-common-java8 = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "lifecycle" }
+browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+converter-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okhttp-urlconnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref = "okhttp" }
+com-github-bumptech-glide-compiler = { group = "com.github.bumptech.glide", name = "ksp", version.ref = "glide" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
+stetho = { group = "com.facebook.stetho", name = "stetho", version.ref = "stetho" }
+stetho-okhttp3 = { group = "com.facebook.stetho", name = "stetho-okhttp3", version.ref = "stetho" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
+firebase-messaging-ktx = { module = "com.google.firebase:firebase-messaging-ktx" }
+firebase-config-ktx = { module = "com.google.firebase:firebase-config-ktx" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-perf-ktx = { module = "com.google.firebase:firebase-perf-ktx" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
+desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+exoplayer = { group = "com.google.android.exoplayer", name = "exoplayer", version.ref = "exoplayer" }
+lingver = { group = "com.github.YarikSOffice", name = "lingver", version.ref = "lingver" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx_hilt" }
+
+[plugins]
+com-android-application = { id = "com.android.application", version.ref = "android-gradle" }
+com-android-library = { id = "com.android.library", version.ref = "android-gradle" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlin"  }
+com-google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
+com-google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
+com-google-firebase-firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebase-perf" }
+com-google-devtools-ksp = {id="com.google.devtools.ksp", version.ref = "ksp"}
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+
+
