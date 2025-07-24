@@ -1,3 +1,6 @@
+![logo](app/src/main/ic_launcher-playstore.png)
+
+
 # 📺 TV Store – Android TV App (Kotlin + MVVM + Jetpack Compose)
 
 A modern Android TV application built using **Kotlin**, **Jetpack Compose**, **MVVM**, and **ExoPlayer**, designed to display a categorized movie list from a mock API, allowing users to browse, view details, and play videos with full seek functionality.
