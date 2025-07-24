@@ -68,6 +68,9 @@ dependencies {
     testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
@@ -106,4 +109,5 @@ dependencies {
 
 
     implementation(libs.androidx.leanback)
+    testImplementation(kotlin("test"))
 }
