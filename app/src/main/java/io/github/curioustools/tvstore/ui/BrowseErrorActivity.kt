@@ -278,7 +278,7 @@ class MainActivity : FragmentActivity() {
                 .commitNow()
         }
         lifecycleScope.launch {
-
+            movieDataViewModel.onUiTrigger(MovieUiTriggers.LoadMovies)
         }
     }
 }
