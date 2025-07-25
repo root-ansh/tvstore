@@ -59,6 +59,7 @@ java {
 }
 
 dependencies {
+    implementation(libs.androidx.material3.android)
     coreLibraryDesugaring (libs.desugar.jdk.libs)
     implementation(fileTree("libs") { include("*.jar", "*.aar") })
 
