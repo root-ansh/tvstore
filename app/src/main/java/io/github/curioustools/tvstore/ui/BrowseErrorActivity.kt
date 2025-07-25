@@ -19,7 +19,6 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -51,13 +50,11 @@ import androidx.leanback.widget.PlaybackControlsRow
 import androidx.leanback.widget.Presenter
 import androidx.leanback.widget.Row
 import androidx.leanback.widget.RowPresenter
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.curioustools.tvstore.R
-import kotlinx.coroutines.launch
 import java.io.Serializable
 import java.util.Collections
 import java.util.Timer
@@ -261,25 +258,6 @@ class ErrorFragment : ErrorSupportFragment() {
 
     companion object {
         private val TRANSLUCENT = true
-    }
-}
-
-@AndroidEntryPoint
-class MainActivity : FragmentActivity() {
-    private val movieDataViewModel by viewModels<MovieDataViewModel>()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_browse_fragment, MainFragment())
-                .commitNow()
-        }
-        lifecycleScope.launch {
-            movieDataViewModel.onUiTrigger(MovieUiTriggers.LoadMovies)
-        }
     }
 }
 

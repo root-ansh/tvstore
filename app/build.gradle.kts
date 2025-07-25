@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.com.google.devtools.ksp)
     alias(libs.plugins.hilt)
@@ -18,6 +20,9 @@ android {
         versionName = libs.versions.appinfo.versionName.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -39,6 +44,12 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 java {
@@ -51,39 +62,62 @@ dependencies {
     coreLibraryDesugaring (libs.desugar.jdk.libs)
     implementation(fileTree("libs") { include("*.jar", "*.aar") })
 
+    //arch : core/ui
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.legacy.support.v4)
     implementation(libs.recyclerview)
     implementation(libs.material)
-    implementation(libs.androidx.navigation.fragment)
-    implementation(libs.androidx.navigation.ui)
-    implementation(libs.androidx.navigation.dynamic.features.fragment)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.browser)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
 
-    // JSON serialization library, works with the Kotlin serialization plugin
-    implementation(libs.kotlinx.serialization.json)
-
-    //testing
-    testImplementation(libs.junit.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.kotlinx.coroutines.test)
-
+    // arch : lifecycle
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.savedstate)
     implementation(libs.lifecycle.common.java8)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    implementation(libs.browser)
+    //arch : compose
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
+
+
+    //arch : navigation
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.dynamic.features.fragment)
+
+
+    // arch : hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+
+    //testing
+    testImplementation(libs.junit.junit)
+    androidTestImplementation(libs.espresso.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(kotlin("test"))
+
 
     //networking
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation (libs.converter.scalars)
-
     implementation(libs.stetho)
     implementation(libs.stetho.okhttp3)
     implementation(libs.gson)
@@ -92,22 +126,22 @@ dependencies {
     implementation (libs.okhttp.urlconnection)
     implementation(libs.jsoup)
     implementation(libs.glide)
+    implementation(libs.kotlinx.serialization)
+
     //ksp(libs.com.github.bumptech.glide.compiler)
 
-
-
-
-    implementation( libs.exoplayer)
 
     //misc: timber
     implementation(libs.timber)
 
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
-    ksp(libs.androidx.hilt.compiler)
-
-
-
+    //misc : tv
     implementation(libs.androidx.leanback)
-    testImplementation(kotlin("test"))
+    implementation(libs.androidx.tv.material)
+
+
+    // Compose Previews
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+
+
 }
