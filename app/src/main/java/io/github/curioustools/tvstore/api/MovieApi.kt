@@ -6,32 +6,68 @@ import retrofit2.http.GET
 import javax.inject.Inject
 
 @Keep
-data class MovieModel( val `data`: List<Categories> = listOf()) {
-    @Keep
-    data class Categories(
-        val id: String = "",
-        val subtitle: String = "",
-        val title: String = "",
-        val videos: List<Video> = listOf()
-    ) {
-        @Keep
-        data class Video(
-            val background: String = "",
-            val description: String = "",
-            val id: String = "",
-            val tags: List<String> = listOf(),
-            val thumbnail: String = "",
-            val title: String = "",
-            val url: String = ""
-        )
+data class MovieDTO(
+    val contentRating: String = "",
+    val directors: String = "",
+    val fullTitle: String = "",
+    val genres: String = "",
+    val id: String = "",
+    val image_16_9: String = "",
+    val image_2_3: String = "",
+    val metaCriticRating: Int = 0,
+    val plot: String = "",
+    val rank: Int = 0,
+    val rankUpDown: String = "",
+    val rating: Double = 0.0,
+    val ratingCount: Int = 0,
+    val releaseDate: String = "",
+    val runtimeMins: Int = 0,
+    val runtimeStr: String = "",
+    val stars: String = "",
+    val subtitleUri: String = "",
+    val title: String = "",
+    val videoUri: String = "",
+    val year: Int = 0,
+){
+    companion object{
+        fun dtoToModel(dtos:List<MovieDTO>): MovieModel{
+            val genreMap = mutableMapOf<String, MutableList<MovieDTO>>()
+            for (dto in dtos) {
+                val genres = dto.genres.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                for (genre in genres) {
+                    genreMap.getOrPut(genre) { mutableListOf() }.add(dto)
+                }
+            }
+            val categories = genreMap.map { MovieModel.Category(
+                id = it.key,
+                subtitle = getCatSubtitle(it.key),
+                title = it.key.capitalize(),
+                videos = it.value
+            ) }
+
+            return MovieModel(categories)
+        }
+
+        fun getCatSubtitle(title: String): String{
+            return title
+        }
     }
 }
 
+@Keep
+data class MovieModel( val `data`: List<Category> = listOf()) {
+    @Keep
+    data class Category(
+        val id: String = "",
+        val subtitle: String = "",
+        val title: String = "",
+        val videos: List<MovieDTO> = listOf()
+    )
+}
+
 interface MovieApi {
-
     @GET(NetworkDI.URL_MOVIES)
-    suspend fun getMovieData(): MovieModel
-
+    suspend fun getMovieData(): ArrayList<MovieDTO>
 }
 
 interface MovieDataRepo{
@@ -40,7 +76,7 @@ interface MovieDataRepo{
 
 class MovieDataRepoImpl @Inject constructor(private val movieApi: MovieApi): MovieDataRepo {
     override suspend fun getMovieData(): MovieModel {
-        return  movieApi.getMovieData()
+        return MovieDTO.dtoToModel(movieApi.getMovieData())
     }
 }
 

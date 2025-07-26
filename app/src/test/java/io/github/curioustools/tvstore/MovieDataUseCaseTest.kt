@@ -1,5 +1,6 @@
 package io.github.curioustools.tvstore
 
+import io.github.curioustools.tvstore.api.MovieDTO
 import io.github.curioustools.tvstore.api.MovieDataRepo
 import io.github.curioustools.tvstore.api.MovieDataUseCase
 import io.github.curioustools.tvstore.api.MovieModel
@@ -21,15 +22,15 @@ class MovieDataUseCaseTest {
 
     private val fakeData = MovieModel(
         data = listOf(
-            MovieModel.Categories(
+            MovieModel.Category(
                 id = "1",
                 title = "Action",
                 subtitle = "Action-packed films",
                 videos = listOf(
-                    MovieModel.Categories.Video(
+                    MovieDTO(
                         id = "v1",
                         title = "Fast & Furious",
-                        url = "https://video.url"
+                        videoUri = "https://video.url"
                     )
                 )
             )

@@ -1,6 +1,7 @@
 package io.github.curioustools.tvstore.api
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -14,6 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -31,7 +33,7 @@ object NetworkDI{
         return OkHttpClient.Builder()
             .cache(cache)
             .retryOnConnectionFailure(true)
-            .addInterceptor(logger)
+            //.addInterceptor(logger)
             .connectTimeout(3000, TimeUnit.SECONDS)
             .readTimeout(3000, TimeUnit.SECONDS)
             .hostnameVerifier { _, _ -> true }
@@ -62,6 +64,11 @@ object NetworkDI{
     @Provides
     fun makeMovieRepo(service: MovieApi): MovieDataRepo {
         return MovieDataRepoImpl(service)
+    }
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
     }
 
 }

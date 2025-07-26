@@ -25,8 +25,6 @@ import io.github.curioustools.tvstore.ui.utils.AppTheme
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val movieDataViewModel by viewModels<MovieDataViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)

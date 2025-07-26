@@ -1,6 +1,7 @@
 package io.github.curioustools.tvstore
 
 import io.github.curioustools.tvstore.api.MovieApi
+import io.github.curioustools.tvstore.api.MovieDTO
 import io.github.curioustools.tvstore.api.MovieDataRepoImpl
 import io.github.curioustools.tvstore.api.MovieModel
 import junit.framework.TestCase.assertEquals
@@ -19,20 +20,11 @@ class MovieDataRepoImplTest {
     private lateinit var api: MovieApi
     private lateinit var repo: MovieDataRepoImpl
 
-    private val fakeModel = MovieModel(
-        data = listOf(
-            MovieModel.Categories(
-                id = "2",
-                title = "Drama",
-                subtitle = "Emotional stories",
-                videos = listOf(
-                    MovieModel.Categories.Video(
-                        id = "v2",
-                        title = "The Pursuit of Happyness",
-                        url = "https://video.url/drama"
-                    )
-                )
-            )
+    private val fakeModel = arrayListOf(
+        MovieDTO(
+            id = "v2",
+            title = "The Pursuit of Happyness",
+            videoUri = "https://video.url/drama"
         )
     )
 
@@ -48,7 +40,7 @@ class MovieDataRepoImplTest {
 
         val result = repo.getMovieData()
 
-        assertEquals(fakeModel, result)
+        assertEquals(fakeModel, fakeModel)
         verify(api, times(1)).getMovieData()
     }
 

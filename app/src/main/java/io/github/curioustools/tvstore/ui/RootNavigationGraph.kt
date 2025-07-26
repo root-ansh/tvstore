@@ -15,9 +15,9 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import io.github.curioustools.tvstore.ui.screens.home.MovieDetailsScreen
+import io.github.curioustools.tvstore.ui.screens.details.MovieDetailsScreen
 import io.github.curioustools.tvstore.ui.screens.home.DashboardScreen
-import io.github.curioustools.tvstore.ui.screens.home.VideoPlayerScreen
+import io.github.curioustools.tvstore.ui.screens.player.VideoPlayerScreen
 
 @Composable
 fun RootNavigationGraph(

@@ -1,9 +1,5 @@
 ![logo](app/src/main/ic_launcher-playstore.png)
 
-//remove unncessary libs
-//https://github.com/android/tv-samples/tree/main/JetStreamCompose
-//https://developer.android.com/codelabs/compose-for-tv-introduction#0
-
 
 # 📺 TV Store – Android TV App (Kotlin + MVVM + Jetpack Compose)
 
