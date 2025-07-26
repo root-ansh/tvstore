@@ -65,7 +65,7 @@ fun ListingScreen(
 
 }
 
-@Preview
+
 @Composable
 fun ListingScreenUI(
     state: MovieUiState = MovieUiState(),

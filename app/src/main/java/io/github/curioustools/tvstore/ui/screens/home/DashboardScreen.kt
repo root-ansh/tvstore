@@ -56,7 +56,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpRect
 import androidx.compose.ui.unit.IntOffset
@@ -66,9 +65,6 @@ import androidx.compose.ui.unit.height
 import androidx.compose.ui.unit.width
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Icon
 import androidx.tv.material3.LocalContentColor
@@ -78,12 +74,11 @@ import androidx.tv.material3.TabRow
 import androidx.tv.material3.Text
 import io.github.curioustools.tvstore.R
 import io.github.curioustools.tvstore.ui.AppRoutes
-import io.github.curioustools.tvstore.ui.screens.categories.CategoriesScreen
-import io.github.curioustools.tvstore.ui.screens.search.SearchScreen
+import io.github.curioustools.tvstore.ui.DashboardSubGraph
 import io.github.curioustools.tvstore.ui.utils.LexendExa
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 
-val TopBarTabs = listOf(AppRoutes.Sub_Home, AppRoutes.Sub_Categories, AppRoutes.Sub_Search)
+val TopBarTabs = listOf(AppRoutes.SubGraphHome, AppRoutes.SubGraphCategories, AppRoutes.SubGraphSearch)
 
 val TopBarFocusRequesters = List(size = TopBarTabs.size) { FocusRequester() }
 
@@ -105,7 +100,7 @@ fun DashboardScreen(
     var currentDestination: String? by remember { mutableStateOf(null) }
     val currentTopBarSelectedTabIndex by remember(currentDestination) {
         derivedStateOf {
-            currentDestination?.let { TopBarTabs.indexOf(AppRoutes.find(it)) } ?: 0
+            currentDestination?.let { TopBarTabs.indexOf(AppRoutes.findByRoute(it)) } ?: 0
         }
     }
 
@@ -196,7 +191,7 @@ fun DashboardScreen(
             }
         }
 
-        DashboardContent(
+        DashboardSubGraph(
             openMovieDetailsScreen = openMovieDetailsScreen,
             openVideoPlayer = openVideoPlayer,
             updateTopBarVisibility = { isTopBarVisible = it },
@@ -226,44 +221,6 @@ private fun BackPressHandledArea(
             .then(modifier),
         content = content
     )
-
-@Composable
-private fun DashboardContent(
-    openMovieDetailsScreen: () -> Unit,
-    openVideoPlayer: () -> Unit,
-    updateTopBarVisibility: (Boolean) -> Unit,
-    modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
-    isTopBarVisible: Boolean = true,
-) =
-    NavHost(
-        modifier = modifier,
-        navController = navController,
-        startDestination = AppRoutes.Sub_Home.route,
-    ) {
-
-        composable(AppRoutes.Sub_Home.route) {
-            ListingScreen(
-                onMovieClick = openMovieDetailsScreen,
-                goToVideoPlayer = openVideoPlayer,
-                onScroll = updateTopBarVisibility,
-                isTopBarVisible = isTopBarVisible
-            )
-        }
-        composable(AppRoutes.Sub_Categories.route) {
-            CategoriesScreen(
-                onCategoryClick = {},
-                onScroll = updateTopBarVisibility
-            )
-        }
-        composable(AppRoutes.Sub_Search.route) {
-            SearchScreen(
-                onMovieClick = openMovieDetailsScreen,
-                onScroll = updateTopBarVisibility
-            )
-        }
-
-    }
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -316,7 +273,7 @@ fun DashboardTopBar(
                                 onFocus = { onScreenSelection(screen) },
                                 onClick = { focusManager.moveFocus(FocusDirection.Down) },
                             ) {
-                                if (screen == AppRoutes.Sub_Search) {
+                                if (screen == AppRoutes.SubGraphSearch) {
                                     Icon(
                                         Icons.Default.Search,
                                         modifier = Modifier.padding(4.dp),
@@ -379,7 +336,7 @@ fun DashboardTopBarItemIndicator(
 }
 
 
-@Preview
+
 @Composable
 private fun AppLogo(
     modifier: Modifier = Modifier

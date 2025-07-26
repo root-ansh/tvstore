@@ -30,7 +30,7 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 
-@Preview
+
 @Composable
 fun FullScreenLoader(
     isVisible: Boolean = true,

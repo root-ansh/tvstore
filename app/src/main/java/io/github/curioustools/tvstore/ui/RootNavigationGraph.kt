@@ -12,12 +12,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import io.github.curioustools.tvstore.ui.screens.categories.CategoriesScreen
 import io.github.curioustools.tvstore.ui.screens.details.MovieDetailsScreen
 import io.github.curioustools.tvstore.ui.screens.home.DashboardScreen
+import io.github.curioustools.tvstore.ui.screens.home.ListingScreen
 import io.github.curioustools.tvstore.ui.screens.player.VideoPlayerScreen
+import io.github.curioustools.tvstore.ui.screens.search.SearchScreen
 
 @Composable
 fun RootNavigationGraph(
@@ -61,6 +66,46 @@ fun RootNavigationGraph(
 
 }
 
+@Composable
+fun DashboardSubGraph(
+    openMovieDetailsScreen: () -> Unit,
+    openVideoPlayer: () -> Unit,
+    updateTopBarVisibility: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
+    isTopBarVisible: Boolean = true,
+) =
+    NavHost(
+        modifier = modifier,
+        navController = navController,
+        startDestination = AppRoutes.SubGraphHome.route,
+    ) {
+
+        composable(AppRoutes.SubGraphHome.route) {
+            ListingScreen(
+                onMovieClick = openMovieDetailsScreen,
+                goToVideoPlayer = openVideoPlayer,
+                onScroll = updateTopBarVisibility,
+                isTopBarVisible = isTopBarVisible
+            )
+        }
+        composable(AppRoutes.SubGraphCategories.route) {
+            CategoriesScreen(
+                onCategoryClick = {},
+                onScroll = updateTopBarVisibility
+            )
+        }
+        composable(AppRoutes.SubGraphSearch.route) {
+            SearchScreen(
+                onMovieClick = openMovieDetailsScreen,
+                onScroll = updateTopBarVisibility
+            )
+        }
+
+    }
+
+
+
 
 fun slideInWithFade(duration: Int = 500) = slideInHorizontally(
     initialOffsetX = { it },
@@ -86,15 +131,15 @@ fun popSlideOutWithFade(duration: Int = 500) = slideOutHorizontally(
 
 enum class AppRoutes(val route: String) {
     Dashboard("dashboard"),
-    Sub_Home("home"),
-    Sub_Categories("categories"),
-    Sub_Search("search"),
+    SubGraphHome("home"),
+    SubGraphCategories("categories"),
+    SubGraphSearch("search"),
     MovieDetails("details"),
     VideoPlayer("player");
 
     companion object{
-        fun find(s: String): AppRoutes{
-            return entries.find { it.route.equals(s,true) }?: AppRoutes.Sub_Home
+        fun findByRoute(s: String): AppRoutes{
+            return entries.find { it.route.equals(s,true) }?: SubGraphHome
         }
     }
 

@@ -506,7 +506,7 @@ fun VideoPlayerMainFrame(
     }
 }
 
-@Preview(device = "id:tv_4k")
+
 @Composable
 private fun MediaPlayerMainFramePreviewLayout() {
     VideoPlayerMainFrame(
@@ -547,7 +547,7 @@ private fun MediaPlayerMainFramePreviewLayout() {
     )
 }
 
-@Preview(device = "id:tv_4k")
+
 @Composable
 private fun MediaPlayerMainFramePreviewLayoutWithoutMore() {
     VideoPlayerMainFrame(

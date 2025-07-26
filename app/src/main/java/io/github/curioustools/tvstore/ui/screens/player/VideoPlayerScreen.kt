@@ -57,7 +57,10 @@ fun VideoPlayerUI(
         exoPlayer.prepare()
     }
 
-    BackHandler(onBack = onBackPressed)
+    BackHandler(onBack = {
+        exoPlayer.stop()
+        onBackPressed.invoke()
+    })
 
     val pulseState = rememberVideoPlayerPulseState()
 

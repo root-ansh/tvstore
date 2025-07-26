@@ -21,7 +21,7 @@ import androidx.tv.material3.Text
 import io.github.curioustools.tvstore.base.FailureInfo
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 
-@Preview
+
 @Composable
 fun FullScreenError(
     isVisible : Boolean = true,
