@@ -1,7 +1,6 @@
 ![logo](app/src/main/ic_launcher-playstore.png)
 
-// remove unnecessary stuff 
-// make previews ofcomponents
+
 
 # 📺 TV Store – Android TV App (Kotlin + MVVM + Jetpack Compose)
 

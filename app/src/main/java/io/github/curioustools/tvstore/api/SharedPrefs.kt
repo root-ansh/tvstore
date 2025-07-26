@@ -2,6 +2,9 @@ package io.github.curioustools.tvstore.api
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,20 +26,30 @@ class SharedPrefs @Inject constructor(
             prefs.edit { putString(KEY_FAVOURITES, value) }
         }
 
-    var recentVideos: String
-        get() = prefs.getString(KEY_RECENT_VIDEOS, "").orEmpty()
+    var listingCache: MovieModel?
+        get() = prefs.getString(KEY_FAVOURITES, "").orEmpty().toModelViaGSON<MovieModel>()
         set(value) {
-            prefs.edit { putString(KEY_RECENT_VIDEOS, value) }
+            prefs.edit { putString(KEY_FAVOURITES, value.toJsonString()) }
         }
 
-    var searches: String
-        get() = prefs.getString(KEY_RECENT_SEARCHES, "").orEmpty()
-        set(value) {
-            prefs.edit { putString(KEY_RECENT_SEARCHES, value) }
-        }
 
 
     fun clear() {
         prefs.edit { clear() }
+    }
+}
+inline fun <reified T> String.toModelViaGSON(): T?{
+    return runCatching {
+        val type: Type = object : TypeToken<T>() {}.type
+        val gson = Gson()
+        return gson.fromJson(this,type)
+    }.getOrNull()
+}
+inline fun <reified T> T.toJsonString(): String {
+    return try {
+        Gson().toJson(this)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "{}"
     }
 }
