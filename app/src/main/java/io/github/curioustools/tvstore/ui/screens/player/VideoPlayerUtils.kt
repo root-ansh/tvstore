@@ -47,6 +47,7 @@ import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -66,6 +67,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -915,4 +917,21 @@ fun Modifier.dPadEvents(
 
 fun String.intoMediaItem(): MediaItem {
     return MediaItem.Builder().setUri(this).build()
+}
+
+/**
+ * This modifier can be used to gain focus on a focusable component when it becomes visible
+ * for the first time.
+ * */
+@Composable
+fun Modifier.focusOnInitialVisibility(isVisible: MutableState<Boolean>): Modifier {
+    val focusRequester = remember { FocusRequester() }
+
+    return focusRequester(focusRequester)
+        .onPlaced {
+            if (!isVisible.value) {
+                focusRequester.requestFocus()
+                isVisible.value = true
+            }
+        }
 }

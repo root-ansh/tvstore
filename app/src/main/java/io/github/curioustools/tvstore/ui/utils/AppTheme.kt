@@ -145,6 +145,18 @@ data class UpdatedColorXml(
 
     val coolColors: List<Color> = listOf(pastelV1Surface,pastelV2Surface,pastelV3Surface,pastelV4Surface,pastelV5Surface,pastelV6Surface,pastelV7Surface),
 
+    val pairs:List<Pair<Color, Color>> = listOf(
+        pastelV1Surface to pastelV1Outline,
+        pastelV2Surface to pastelV2Outline,
+        pastelV3Surface to pastelV3Outline,
+        pastelV4Surface to pastelV4Outline,
+        pastelV5Surface to pastelV5Outline,
+        pastelV6Surface to pastelV6Outline,
+        pastelV7Surface to pastelV7Outline,
+        pastelV8Surface to pastelV8Outline,
+        pastelV9Surface to pastelV9Outline,
+    ),
+
 
     // Form Colors
     val alertSuccess: Color = Color(0xFF4EA965),

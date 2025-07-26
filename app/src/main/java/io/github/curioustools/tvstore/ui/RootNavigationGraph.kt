@@ -6,7 +6,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import io.github.curioustools.tvstore.ui.screens.categories.CategoriesScreen
+import io.github.curioustools.tvstore.ui.screens.categories.CategoryResultsScreen
 import io.github.curioustools.tvstore.ui.screens.details.MovieDetailsScreen
 import io.github.curioustools.tvstore.ui.screens.home.DashboardScreen
 import io.github.curioustools.tvstore.ui.screens.home.ListingScreen
@@ -27,7 +27,6 @@ import io.github.curioustools.tvstore.ui.screens.search.SearchScreen
 @Composable
 fun RootNavigationGraph(
     navController: NavHostController,
-    snackBarHostState: SnackbarHostState,
     onBackPressedSystem : () -> Unit
 ) {
     var isComingBackFromDifferentScreen by remember { mutableStateOf(false) }
@@ -46,6 +45,7 @@ fun RootNavigationGraph(
                        isComingBackFromDifferentScreen = isComingBackFromDifferentScreen,
                        openVideoPlayer = {navController.navigate(AppRoutes.VideoPlayer.route)},
                        openMovieDetailsScreen = {navController.navigate(AppRoutes.MovieDetails.route)},
+                       openCategoryResults = {navController.navigate(AppRoutes.CategoryResults.route)},
                        resetIsComingBackFromDifferentScreen = {isComingBackFromDifferentScreen = false},
                    )
                }
@@ -60,7 +60,12 @@ fun RootNavigationGraph(
                     onBackPressed = {navController.popBackStack()}
                 )
             }
-
+            composable(route = AppRoutes.CategoryResults.route) {
+                CategoryResultsScreen(
+                    onBackPressed = { navController.popBackStack() },
+                    openMovieDetailsScreen = { navController.navigate(AppRoutes.MovieDetails.route) },
+                )
+            }
         }
     )
 
@@ -70,6 +75,7 @@ fun RootNavigationGraph(
 fun DashboardSubGraph(
     openMovieDetailsScreen: () -> Unit,
     openVideoPlayer: () -> Unit,
+    openCategoryResults: () -> Unit,
     updateTopBarVisibility: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
@@ -91,7 +97,7 @@ fun DashboardSubGraph(
         }
         composable(AppRoutes.SubGraphCategories.route) {
             CategoriesScreen(
-                onCategoryClick = {},
+                onCategoryClick = { openCategoryResults.invoke() },
                 onScroll = updateTopBarVisibility
             )
         }
@@ -134,6 +140,7 @@ enum class AppRoutes(val route: String) {
     SubGraphHome("home"),
     SubGraphCategories("categories"),
     SubGraphSearch("search"),
+    CategoryResults("category_results"),
     MovieDetails("details"),
     VideoPlayer("player");
 

@@ -87,6 +87,7 @@ fun DashboardScreen(
     onBackPressed: () -> Unit ,
     openVideoPlayer: () -> Unit,
     openMovieDetailsScreen: () -> Unit,
+    openCategoryResults : () -> Unit,
     resetIsComingBackFromDifferentScreen: () -> Unit,
     isComingBackFromDifferentScreen: Boolean,
 ) {
@@ -197,6 +198,7 @@ fun DashboardScreen(
             updateTopBarVisibility = { isTopBarVisible = it },
             isTopBarVisible = isTopBarVisible,
             navController = navController,
+            openCategoryResults = openCategoryResults,
             modifier = Modifier.offset(y = navHostTopPaddingDp),
         )
     }

@@ -35,7 +35,6 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 RootNavigationGraph(
                     navController = navController,
-                    snackBarHostState = snackBarHostState,
                     onBackPressedSystem = onBackPressedDispatcher::onBackPressed,
                 )
             }

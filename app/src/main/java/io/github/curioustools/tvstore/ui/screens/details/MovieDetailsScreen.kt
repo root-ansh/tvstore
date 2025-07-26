@@ -41,6 +41,7 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -64,6 +65,7 @@ import coil.request.ImageRequest
 import io.github.curioustools.tvstore.api.MovieDTO
 import io.github.curioustools.tvstore.api.SessionCache
 import io.github.curioustools.tvstore.ui.screens.home.rememberChildPadding
+import io.github.curioustools.tvstore.ui.utils.BlurTransformation
 import io.github.curioustools.tvstore.ui.utils.UpdatedColorXml
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 import kotlinx.coroutines.launch
@@ -119,10 +121,11 @@ fun MainDetails(
             .bringIntoViewRequester(bringIntoViewRequester)
     ) {
         AsyncImage(
-            modifier = Modifier.fillMaxSize().alpha(0.5f),
+            modifier = Modifier.fillMaxSize().alpha(0.8f),
             model = ImageRequest.Builder(LocalContext.current)
                 .crossfade(true)
                 .data(movieDTO.image_16_9)
+                .transformations(listOf(BlurTransformation()))
                 .build(),
             contentDescription = movieDTO.title,
             contentScale = ContentScale.FillBounds
@@ -204,6 +207,7 @@ private fun WatchTrailerButton(
     goToMoviePlayer: () -> Unit
 ) {
     Button(
+        colors = ButtonDefaults.colors(focusedContainerColor = MaterialTheme.localUpdatedColors.starYellow),
         onClick = goToMoviePlayer,
         modifier = modifier.padding(top = 24.dp),
         contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
@@ -230,11 +234,10 @@ private fun MovieDescription(description: String) {
     Text(
         text = description,
         style = MaterialTheme.typography.titleSmall.copy(
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Normal
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         ),
         modifier = Modifier.padding(top = 8.dp),
-        maxLines = 2,
         color = text
     )
 }
