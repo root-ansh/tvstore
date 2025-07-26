@@ -1,4 +1,4 @@
-package io.github.curioustools.tvstore.ui.screens.details
+package io.github.curioustools.tvstore.ui.screens.home
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package io.github.curioustools.tvstore.ui
+package io.github.curioustools.tvstore.ui.screens.home
 
 import android.content.Context
 import android.widget.Toast

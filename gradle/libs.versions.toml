@@ -9,7 +9,9 @@ appinfo-jvm = "17" # DONT REMOVE . these are not being linked, but are being use
 
 kotlinxCoroutinesTest = "1.10.2"
 kotlinxSerializationJson = "1.9.0"
-ksp = "2.2.0-2.0.2" #should be compatible with kotlin version : https://developer.android.com/build/migrate-to-ksp#add-ksp
+kotlin = "2.1.0"
+kotlin-android = "2.1.0"
+ksp = "2.1.0-1.0.29" #should be compatible with kotlin version : https://developer.android.com/build/migrate-to-ksp#add-ksp
 android-gradle = "8.11.1" #should be compatible with android studio and gradle wrapper version : https://developer.android.com/build/releases/gradle-plugin#updating-gradle
 androidx-core = "1.12.0"
 androidx-junit = "1.1.5"
@@ -43,7 +45,7 @@ timber = "5.0.1"
 hilt = "2.56.2"
 androidx_hilt = "1.2.0"
 agp = "8.11.1"
-kotlin = "2.2.0"
+
 coreKtx = "1.16.0"
 leanback = "1.0.0"
 activity-compose = "1.10.1"
@@ -57,7 +59,7 @@ tv-material = "1.0.0"
 core-splashscreen = "1.0.1"
 hilt-navigation-compose = "1.2.0"
 hilt-android = "2.54"
-kotlin-android = "2.1.0"
+
 kotlinx-serialization = "1.8.0"
 lifecycle-runtime-ktx = "2.8.7"
 media3 = "1.6.0-beta01"

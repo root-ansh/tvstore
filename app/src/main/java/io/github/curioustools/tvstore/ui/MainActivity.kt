@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.curioustools.tvstore.ui.screens.details.RootNavigationGraph
+import io.github.curioustools.tvstore.ui.screens.home.MovieDataViewModel
 import io.github.curioustools.tvstore.ui.utils.AppTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -35,19 +35,11 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val snackBarHostState = remember { SnackbarHostState() }
             AppTheme {
-                Scaffold(
-                    snackbarHost = {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            SnackbarHost(hostState = snackBarHostState, modifier = Modifier.padding(16.dp).fillMaxWidth().align(Alignment.BottomCenter))
-                        }
-                    },
-                    modifier = Modifier.fillMaxSize()
-                ) {  paddingValues ->
-                    RootNavigationGraph(
-                        navController = navController,
-                        snackBarHostState = snackBarHostState
-                    )
-                }
+                RootNavigationGraph(
+                    navController = navController,
+                    snackBarHostState = snackBarHostState,
+                    onBackPressedSystem = onBackPressedDispatcher::onBackPressed,
+                )
             }
 
         }

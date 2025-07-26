@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.unit.sp
+import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Typography
 import androidx.tv.material3.darkColorScheme
@@ -393,7 +394,8 @@ fun AppTheme(
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
-        LocalUpdatedColors provides UpdatedColorXml()
+        LocalUpdatedColors provides UpdatedColorXml(),
+        LocalContentColor provides MaterialTheme.colorScheme.onSurface
     ) {
         MaterialTheme(
             colorScheme = darkColorScheme,
