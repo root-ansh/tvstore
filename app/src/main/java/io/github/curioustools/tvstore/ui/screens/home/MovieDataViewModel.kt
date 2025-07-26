@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.curioustools.tvstore.api.MovieDataUseCase
 import io.github.curioustools.tvstore.api.MovieModel
+import io.github.curioustools.tvstore.api.SessionCache
 import io.github.curioustools.tvstore.api.SharedPrefs
 import io.github.curioustools.tvstore.base.FailureInfo
 import io.github.curioustools.tvstore.base.extractFailureInfo
@@ -42,7 +43,16 @@ class MovieDataViewModel @Inject constructor(
             delay(100)
             _ownerEventFlow.emit(OwnerEvents.ShowLoader())
             try {
-                val result = movieDataUseCase.execute("")
+                val result: MovieModel
+                if(!SessionCache.hasRequestedFromApiOnce){
+                    SessionCache.hasRequestedFromApiOnce = true
+                    result = movieDataUseCase.execute("")
+                    prefs.listingCache = result
+                }else{
+                    val cachedResp = prefs.listingCache
+                    result = if(cachedResp!=null && cachedResp.data.isNotEmpty()) cachedResp
+                    else  movieDataUseCase.execute("")
+                }
                 val resultWithFavourites: MovieModel = getResultWithFavourites(result)
                 _uiState.update {  it.copy(data = resultWithFavourites)}
                 _ownerEventFlow.emit(OwnerEvents.DoNothing)

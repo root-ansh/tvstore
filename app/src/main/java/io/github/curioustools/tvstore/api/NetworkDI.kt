@@ -33,7 +33,7 @@ object NetworkDI{
         return OkHttpClient.Builder()
             .cache(cache)
             .retryOnConnectionFailure(true)
-            //.addInterceptor(logger)
+            .addInterceptor(logger)
             .connectTimeout(3000, TimeUnit.SECONDS)
             .readTimeout(3000, TimeUnit.SECONDS)
             .hostnameVerifier { _, _ -> true }
