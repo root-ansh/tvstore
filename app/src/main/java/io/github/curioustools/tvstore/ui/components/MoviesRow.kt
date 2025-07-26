@@ -73,17 +73,12 @@ import io.github.curioustools.tvstore.api.MovieModel
 import io.github.curioustools.tvstore.ui.screens.home.rememberChildPadding
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 
-enum class ItemDirection(val aspectRatio: Float) {
-    Vertical(10.5f / 16f),
-    Horizontal(16f / 9f);
-}
-
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MoviesRow(
     movieList: MovieModel.Category,
     modifier: Modifier = Modifier,
-    itemDirection: ItemDirection = ItemDirection.Vertical,
+    isVertical: Boolean = true,
     startPadding: Dp = rememberChildPadding().start,
     endPadding: Dp = rememberChildPadding().end,
     title: String? = null,
@@ -120,14 +115,14 @@ fun MoviesRow(
                     MoviesRowItem(
                         modifier = itemModifier.weight(1f),
                         index = index,
-                        itemDirection = itemDirection,
                         onMovieSelected = {
                             lazyRow.saveFocusedChild()
                             onMovieSelected(it)
                         },
                         movie = movie,
                         showItemTitle = true,
-                        showIndexOverImage = false
+                        showIndexOverImage = false,
+                        isVertical = isVertical
                     )
                 }
             }
@@ -143,8 +138,8 @@ private fun MoviesRowItem(
     onMovieSelected: (MovieDTO) -> Unit,
     showItemTitle: Boolean,
     showIndexOverImage: Boolean,
+    isVertical: Boolean ,
     modifier: Modifier = Modifier,
-    itemDirection: ItemDirection = ItemDirection.Vertical,
     onMovieFocused: (MovieDTO) -> Unit = {},
 ) {
     var isFocused by remember { mutableStateOf(false) }
@@ -175,10 +170,11 @@ private fun MoviesRowItem(
             .then(modifier)
     ) {
         MoviesRowItemImage(
-            modifier = Modifier.aspectRatio(itemDirection.aspectRatio),
+            modifier = Modifier.aspectRatio(if(isVertical) 10.5f / 16f else 16f / 9f),
             showIndexOverImage = showIndexOverImage,
             movie = movie,
-            index = index
+            index = index,
+            isVertical = isVertical
         )
     }
 }
@@ -188,10 +184,12 @@ private fun MoviesRowItemImage(
     movie: MovieDTO,
     showIndexOverImage: Boolean,
     index: Int,
+    isVertical: Boolean,
     modifier: Modifier = Modifier,
 ) {
     Box(contentAlignment = Alignment.CenterStart) {
         PosterImage(
+            isVertical = isVertical,
             movie = movie,
             modifier = modifier
                 .fillMaxWidth()
@@ -286,13 +284,14 @@ fun MovieCard(
 @Composable
 fun PosterImage(
     movie: MovieDTO,
+    isVertical: Boolean =true,
     modifier: Modifier = Modifier,
 ) {
     AsyncImage(
         modifier = modifier,
         model = ImageRequest.Builder(LocalContext.current)
             .crossfade(true)
-            .data(movie.image_2_3)
+            .data(if (isVertical) movie.image_2_3 else movie.image_16_9)
             .build(),
         contentDescription = movie.title,
         contentScale = ContentScale.Crop

@@ -102,6 +102,7 @@ fun ListingScreenUI(
                 modifier = Modifier.padding(top = 16.dp).fillMaxWidth(),
                 movieList = category,
                 title = category.title,
+                isVertical = i!=0 && i%3==0,
                 onMovieSelected = {
                     SessionCache.selectedMovie = it
                     goToDetails.invoke()
