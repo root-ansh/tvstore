@@ -82,14 +82,14 @@ private val sampleCategory = MovieModel.Category(
 
 private val sampleCastAndCrew = listOf(
     "Tom Hardy",
-    "Emma Stone", 
+    "Emma Stone",
     "Leonardo DiCaprio",
     "Christopher Nolan",
     "James Cameron"
 )
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -131,7 +131,7 @@ fun MovieCardPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -152,7 +152,7 @@ fun CastAndCrewItemPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -173,7 +173,7 @@ fun CastAndCrewListPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -195,7 +195,7 @@ fun MoviesRowPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -221,7 +221,7 @@ fun MoviesRowItemPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -246,7 +246,7 @@ fun MoviesRowItemImagePreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -269,7 +269,7 @@ fun MoviesRowItemTextPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -292,7 +292,7 @@ fun PosterImagePreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -311,7 +311,7 @@ fun GradientBgPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -332,7 +332,7 @@ fun MovieLargeTitlePreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -353,7 +353,7 @@ fun MovieDescriptionPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -380,7 +380,7 @@ fun DotSeparatedRowPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -401,7 +401,7 @@ fun WatchTrailerButtonPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -422,7 +422,7 @@ fun FullScreenLoaderPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -447,7 +447,7 @@ fun FullScreenErrorPreview() {
 }
 
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
@@ -475,7 +475,7 @@ fun GradientCircularProgressIndicatorPreview() {
 
 // Combined preview showing multiple components together
 @Preview(
-    showBackground = true, 
+    showBackground = true,
     backgroundColor = 0xFF000000,
     device = "id:tv_1080p",
     widthDp = 1920,
