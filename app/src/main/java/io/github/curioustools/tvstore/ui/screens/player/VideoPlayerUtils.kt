@@ -239,44 +239,7 @@ fun VideoPlayerControls(
                 type = VideoPlayerMediaTitleType.DEFAULT
             )
         },
-        mediaActions = {
-            Row(
-                modifier = Modifier.padding(bottom = 16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                PreviousButton(
-                    player = player,
-                    onShowControls = onShowControls
-                )
-                NextButton(
-                    player = player,
-                    onShowControls = onShowControls
-                )
-                RepeatButton(
-                    player = player,
-                    onShowControls = onShowControls,
-                )
-                VideoPlayerControlsIcon(
-                    icon = Icons.Default.AutoAwesomeMotion,
-                    isPlaying = isPlaying,
-                    contentDescription ="Play list",
-                    onShowControls = onShowControls
-                )
-                VideoPlayerControlsIcon(
-                    icon = Icons.Default.ClosedCaption,
-                    isPlaying = isPlaying,
-                    contentDescription ="CC",
-                    onShowControls = onShowControls
-                )
-                VideoPlayerControlsIcon(
-                    icon = Icons.Default.Settings,
-                    isPlaying = isPlaying,
-                    contentDescription ="Settings",
-                    onShowControls = onShowControls
-                )
-            }
-        },
+        mediaActions = {},
         seeker = {
             VideoPlayerSeeker(
                 player = player,

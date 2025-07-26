@@ -40,7 +40,6 @@ Supporting libraries include:
 ---
 
 ## 🧪 Testing
-
 Tests are written using `junit`, `mockito-kotlin`, and `kotlinx.coroutines-test`.  
 Tested components:
 - ✅ `MovieDataUseCase`
@@ -50,58 +49,20 @@ Tested components:
 ---
 
 ## 🔗 Important Files & URLs
-
-- Backend JSON : [https://github.com/root-ansh/misc_test_server/tree/master/ott](https://github.com/root-ansh/misc_test_server/tree/master/ott)
-
----
-
-## 🎥 Demo Video
-
-📽️ [Watch the demo here](#)  
-(*Upload a short demo video to Google Drive, YouTube, or Loom and link it here.*)
-
+- [Backend JSON](/media/backend.json)
+- [Video](/media/video.mp4) 
+- [APK](/media/app-debug.apk)
 ---
 
 ## 📦 How to Run
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/tv-store-app.git
-   ```
-
+1. Clone the repository
 2. Open in **Android Studio Hedgehog or later**
-
 3. Run the app on an **Android TV emulator** or **real TV device**
-
 4. Navigate with the **D-Pad/Remote**
 
 ---
 
-## 📝 Submission Checklist
-
-- ✅ GitHub repo shared with full source code
-- ✅ Readme with architecture, setup & test coverage
-- ✅ Video demo included
-- ✅ All features implemented and tested on Android TV
-
----
-
-## 📱 Screens (Add screenshots or screen recordings)
-
-| Home Screen | Player Screen |
-|-------------|----------------|
-| ![Home](screenshots/home.png) | ![Player](screenshots/player.png) |
-
----
-
-## 💡 Future Improvements
-
-- Add search & filtering
-- Persist playback history
-- Use paging for large video lists
-- Integrate real streaming APIs (YouTube, etc.)
-
----
 
 ## 🛠️ Tech Stack
 
@@ -115,10 +76,4 @@ Tested components:
 | Coroutines      | Async code                      |
 | JUnit + Mockito | Unit Testing                    |
 
----
 
-## 📧 Contact
-
-Have questions or feedback? Reach out at:  
-📧 `your.email@example.com`  
-🔗 [LinkedIn Profile](#)

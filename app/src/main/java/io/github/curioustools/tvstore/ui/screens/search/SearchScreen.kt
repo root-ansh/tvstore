@@ -165,7 +165,7 @@ fun SearchScreenUI(state: MovieUiState, onMovieClick: () -> Unit) {
                                 .padding(start = 20.dp),
                         ) {
                             it()
-                            if (searchQuery.orEmpty().isEmpty()) {
+                            if (searchQuery.isEmpty()) {
                                 Text(
                                     modifier = Modifier.graphicsLayer { alpha = 0.6f },
                                     text = "Search for movies, stars, genres...",
