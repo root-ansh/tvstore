@@ -82,22 +82,6 @@ data class UpdatedColorXml(
     val sectionGradientV2: List<Color> = listOf(Color(0xFFE8F1FF), Color(0xFFFFFFFF)),
 
 
-    //Gradient/Banner
-    val bannerGradientV1: List<Color> = listOf(
-        Color(0xFFDCFBE9), Color(0xFFB3FFD7)
-    ),
-    val bannerGradientV2: List<Color> = listOf(
-        Color(0xFFFDEBEB), Color(0xFFF7C2C0)
-    ),
-    val bannerGradientV3: List<Color> = listOf(
-        Color(0xFFDFFFFC), Color(0xFFEBBF9A)
-    ),
-    val bannerGradientV4: List<Color> = listOf(
-        Color(0xFFF8EAFC), Color(0xFFFFD9DF)
-    ),
-    val bannerGradientV5: List<Color> = listOf(
-        Color(0xFFD8EDFF), Color(0xFF6EB1EB)
-    ),
 
     //Gradient/Card
     val cardGradientCoupon: List<Color> = listOf(
@@ -138,6 +122,7 @@ data class UpdatedColorXml(
     val stateDecline: Color = Color(0xFFA32824),
     val stateExpiredNotification: Color = Color(0xFFE63933),
 
+
     // Pastel
     val pastelV1Surface: Color = Color(0xFFE3F0FF),
     val pastelV1Outline: Color = Color(0xFFC2DEFF),
@@ -157,6 +142,8 @@ data class UpdatedColorXml(
     val pastelV8Outline: Color = Color(0xFFABECF3),
     val pastelV9Surface: Color = Color(0xFFFFFDD2),
     val pastelV9Outline: Color = Color(0xFFF2EEAC),
+
+    val coolColors: List<Color> = listOf(pastelV1Surface,pastelV2Surface,pastelV3Surface,pastelV4Surface,pastelV5Surface,pastelV6Surface,pastelV7Surface),
 
 
     // Form Colors

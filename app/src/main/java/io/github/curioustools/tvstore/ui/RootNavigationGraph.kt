@@ -35,7 +35,6 @@ fun RootNavigationGraph(
         popEnterTransition = { popSlideInWithFade() },
         popExitTransition = { popSlideOutWithFade() },
         builder = {
-
                composable(route = AppRoutes.Dashboard.route){
                    DashboardScreen(
                        onBackPressed = onBackPressedSystem,
@@ -45,7 +44,10 @@ fun RootNavigationGraph(
                        resetIsComingBackFromDifferentScreen = {isComingBackFromDifferentScreen = false},
                    )
                }
-                composable(route = AppRoutes.MovieDetails.route) { MovieDetailsScreen(navController, snackBarHostState) }
+                composable(route = AppRoutes.MovieDetails.route) { MovieDetailsScreen(
+                    goToMoviePlayer = {navController.navigate(AppRoutes.VideoPlayer.route)},
+                    onBackPressed = {navController.popBackStack()}
+                ) }
                 composable(route = AppRoutes.VideoPlayer.route){VideoPlayerScreen(navController,snackBarHostState)}
 
         }
