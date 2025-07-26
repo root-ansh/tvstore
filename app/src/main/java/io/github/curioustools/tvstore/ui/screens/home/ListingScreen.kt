@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
@@ -28,6 +27,7 @@ import io.github.curioustools.tvstore.base.FailureInfo
 import io.github.curioustools.tvstore.ui.components.FullScreenError
 import io.github.curioustools.tvstore.ui.components.FullScreenLoader
 import io.github.curioustools.tvstore.ui.components.MoviesRow
+import io.github.curioustools.tvstore.ui.utils.rememberChildPadding
 
 @Composable
 fun ListingScreen(

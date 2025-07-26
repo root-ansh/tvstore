@@ -8,10 +8,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,7 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -56,10 +53,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpRect
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.height
 import androidx.compose.ui.unit.width
@@ -76,6 +71,7 @@ import io.github.curioustools.tvstore.R
 import io.github.curioustools.tvstore.ui.AppRoutes
 import io.github.curioustools.tvstore.ui.DashboardSubGraph
 import io.github.curioustools.tvstore.ui.utils.LexendExa
+import io.github.curioustools.tvstore.ui.utils.ParentPadding
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 
 val TopBarTabs = listOf(AppRoutes.SubGraphHome, AppRoutes.SubGraphCategories, AppRoutes.SubGraphSearch)
@@ -340,7 +336,7 @@ fun DashboardTopBarItemIndicator(
 
 
 @Composable
-private fun AppLogo(
+fun AppLogo(
     modifier: Modifier = Modifier
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -361,24 +357,3 @@ private fun AppLogo(
 }
 
 
-val ParentPadding = PaddingValues(vertical = 16.dp, horizontal = 58.dp)
-
-@Composable
-fun rememberChildPadding(direction: LayoutDirection = LocalLayoutDirection.current): Padding {
-    return remember {
-        Padding(
-            start = ParentPadding.calculateStartPadding(direction) + 8.dp,
-            top = ParentPadding.calculateTopPadding(),
-            end = ParentPadding.calculateEndPadding(direction) + 8.dp,
-            bottom = ParentPadding.calculateBottomPadding()
-        )
-    }
-}
-
-@Immutable
-data class Padding(
-    val start: Dp,
-    val top: Dp,
-    val end: Dp,
-    val bottom: Dp,
-)

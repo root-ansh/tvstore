@@ -1,6 +1,4 @@
-
-
-package io.github.curioustools.tvstore.ui.screens.player
+package io.github.curioustools.tvstore.ui.utils
 
 import android.content.Context
 import android.view.KeyEvent
@@ -34,15 +32,12 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesomeMotion
-import androidx.compose.material.icons.filled.ClosedCaption
 import androidx.compose.material.icons.filled.Forward10
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Repeat
 import androidx.compose.material.icons.filled.RepeatOne
 import androidx.compose.material.icons.filled.Replay10
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.runtime.Composable
@@ -68,9 +63,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.layout.onPlaced
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -429,7 +422,7 @@ class VideoPlayerPulseState {
     private var _type by mutableStateOf(VideoPlayerPulse.Type.NONE)
     val type: VideoPlayerPulse.Type get() = _type
 
-    private val channel = Channel<Unit>(Channel.CONFLATED)
+    private val channel = Channel<Unit>(CONFLATED)
 
     @OptIn(FlowPreview::class)
     suspend fun observe() {
@@ -800,7 +793,7 @@ fun Modifier.ifElse(
 ): Modifier = ifElse({ condition }, ifTrueModifier, ifFalseModifier)
 
 
-@androidx.annotation.OptIn(UnstableApi::class)
+@OptIn(UnstableApi::class)
 class VideoPlayerState(
     @IntRange(from = 0)
     private val hideSeconds: Int,
@@ -839,7 +832,7 @@ class VideoPlayerState(
  * @return A remembered instance of [VideoPlayerState].
  * @param hideSeconds How many seconds should the controls be visible before being hidden.
  * */
-@androidx.annotation.OptIn(UnstableApi::class)
+@OptIn(UnstableApi::class)
 @Composable
 fun rememberVideoPlayerState(
     @IntRange(from = 0) hideSeconds: Int = 2

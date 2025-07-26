@@ -37,8 +37,8 @@ import io.github.curioustools.tvstore.ui.screens.home.MovieDataViewModel
 import io.github.curioustools.tvstore.ui.screens.home.MovieUiState
 import io.github.curioustools.tvstore.ui.screens.home.MovieUiTriggers
 import io.github.curioustools.tvstore.ui.screens.home.OwnerEvents
-import io.github.curioustools.tvstore.ui.screens.home.rememberChildPadding
-import io.github.curioustools.tvstore.ui.screens.player.focusOnInitialVisibility
+import io.github.curioustools.tvstore.ui.utils.rememberChildPadding
+import io.github.curioustools.tvstore.ui.utils.focusOnInitialVisibility
 import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
 
 @Composable

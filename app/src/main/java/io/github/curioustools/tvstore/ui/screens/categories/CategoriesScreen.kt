@@ -2,20 +2,14 @@ package io.github.curioustools.tvstore.ui.screens.categories
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -30,7 +24,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -39,24 +32,19 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
-import androidx.tv.material3.Border
-import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.StandardCardContainer
-import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
 import io.github.curioustools.tvstore.api.SessionCache
 import io.github.curioustools.tvstore.base.FailureInfo
 import io.github.curioustools.tvstore.ui.components.FullScreenError
 import io.github.curioustools.tvstore.ui.components.FullScreenLoader
+import io.github.curioustools.tvstore.ui.components.GradientBg
 import io.github.curioustools.tvstore.ui.components.MovieCard
-import io.github.curioustools.tvstore.ui.screens.home.ListingScreenUI
 import io.github.curioustools.tvstore.ui.screens.home.MovieDataViewModel
 import io.github.curioustools.tvstore.ui.screens.home.MovieUiState
 import io.github.curioustools.tvstore.ui.screens.home.MovieUiTriggers
 import io.github.curioustools.tvstore.ui.screens.home.OwnerEvents
-import io.github.curioustools.tvstore.ui.screens.home.rememberChildPadding
-import io.github.curioustools.tvstore.ui.utils.localUpdatedColors
+import io.github.curioustools.tvstore.ui.utils.rememberChildPadding
 
 @Composable
 fun CategoriesScreen(
@@ -172,12 +160,3 @@ private fun CategoryGridUi(
 
 
 
-@Composable
-fun GradientBg() {
-    Box(
-        modifier = Modifier
-            .background(Brush.linearGradient(MaterialTheme.localUpdatedColors.pairs.random().toList()))
-            .fillMaxWidth()
-            .height(200.dp)
-    )
-}

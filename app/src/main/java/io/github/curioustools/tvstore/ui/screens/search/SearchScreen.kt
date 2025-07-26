@@ -19,7 +19,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,7 +33,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -59,7 +57,7 @@ import io.github.curioustools.tvstore.ui.screens.home.MovieDataViewModel
 import io.github.curioustools.tvstore.ui.screens.home.MovieUiState
 import io.github.curioustools.tvstore.ui.screens.home.MovieUiTriggers
 import io.github.curioustools.tvstore.ui.screens.home.OwnerEvents
-import io.github.curioustools.tvstore.ui.screens.home.rememberChildPadding
+import io.github.curioustools.tvstore.ui.utils.rememberChildPadding
 
 @Composable
 fun SearchScreen(
